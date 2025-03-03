@@ -173,3 +173,4 @@ BOT_TOKEN = os.environ["BOT_TOKEN"]
 HOST_NAME = os.environ.get("HOST_NAME", "127.0.0.1")
 
 MAX_WATCHED_PER_USER = 5
+CHECK_WEBSITES_PERIODICITY = 5  # mins
