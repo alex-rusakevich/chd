@@ -36,12 +36,14 @@ ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 # Application definition
 
 INSTALLED_APPS = [
+    "django_db_prefix",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "checker",
     "tgbot",
 ]
 
@@ -79,6 +81,8 @@ WSGI_APPLICATION = "chd.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+DB_PREFIX = "chd_"
+
 DATABASES = {
     "default": dj_database_url.config(
         env="DATABASE_URL",
@@ -99,7 +103,7 @@ DATABASES["default"]["OPTIONS"] = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://127.0.0.1:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
@@ -154,6 +158,16 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+CELERY_BROKER_URL = "redis://localhost:6379/0"  # Redis as the broker
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"  # Store task results in Redis
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "UTC"
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 
 HOST_NAME = os.environ.get("HOST_NAME", "127.0.0.1")
+
+MAX_WATCHED_PER_USER = 5

@@ -15,3 +15,10 @@ GRANT ALL PRIVILEGES ON chd_db.* To 'chd_db_user'@'localhost';
 alter user 'chd_db_user'@'localhost' identified by '__chd';
 flush privileges;
 ```
+
+Run dev server:
+
+```sh
+celery -A chd worker --loglevel=info
+python manage.py runserver
+```
