@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "chd"
+version = "0.0.1"
+description = "Detect website changes and notify via a bot"
+authors = ["Alexander Rusakevich <mr.alexander.rusakevich@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "4.2"
+pytelegrambotapi = "^4.26.0"
+dj-database-url = "^2.3.0"
+pymysql = "^1.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
