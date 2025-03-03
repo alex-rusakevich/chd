@@ -16,9 +16,16 @@ alter user 'chd_db_user'@'localhost' identified by '__chd';
 flush privileges;
 ```
 
+Init periodic tasks:
+
+```
+python manage.py initialize_tasks
+```
+
 Run dev server:
 
 ```sh
-celery -A chd worker --loglevel=info
 python manage.py runserver
+celery -A chd worker --loglevel=info
+celery -A chd beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler
 ```
