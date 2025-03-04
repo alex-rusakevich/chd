@@ -6,10 +6,8 @@ def send_help(message, bot: TeleBot):
     bot.send_message(
         message.chat.id,
         """
-        `/help` — see this message
-        `/watch site` — watch the site's changes (max {max_watched} websites)
-        `/forget site` — forget about the site
-        """.format(max_watched=settings.MAX_WATCHED_PER_USER)
-        .strip()
-        .replace("\n", ""),
+`/help` — see this message
+`/watch site` — watch the site's changes (max {max_watched} websites)
+`/forget site` — forget about the site
+        """.format(max_watched=settings.MAX_WATCHED_PER_USER).strip(),
     )

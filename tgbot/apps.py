@@ -11,6 +11,10 @@ class TgbotConfig(AppConfig):
     name = "tgbot"
 
     def ready(self):
+        from tgbot.handlers import register_handlers
+
+        register_handlers(bot)
+
         bot.remove_webhook()
         time.sleep(1)
 

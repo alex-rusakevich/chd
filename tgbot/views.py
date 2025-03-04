@@ -4,7 +4,6 @@ from django.http import HttpRequest, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from tgbot.bot import bot
-from tgbot.handlers import *  # noqa: F403
 
 
 @csrf_exempt

@@ -1,10 +1,17 @@
 from checker.tasks import add_watched_website
-from tgbot.bot import bot
 
 
-@bot.message_handler(commands=["watch"])
-def watch_website(message):
-    website_url = message.text.split(" ", 1)[1]
+def watch_website(message, bot):
+    message_parts = message.text.split(" ", 1)
+
+    if len(message_parts) != 2:
+        bot.send_message(
+            message.chat.id,
+            "Wrong command syntax, see `/help`",
+        )
+        return
+
+    website_url = message_parts[1]
 
     bot.send_message(
         message.chat.id,
