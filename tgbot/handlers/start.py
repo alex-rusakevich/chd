@@ -1,6 +1,8 @@
-from tgbot.bot import bot
+from telebot import TeleBot
 
 
-@bot.message_handler(commands=["start"])
-def send_welcome(message):
-    bot.send_message(message.chat.id, "Hello, World!")
+def send_welcome(message, bot: TeleBot):
+    bot.send_message(
+        message.chat.id,
+        "Greetings! I'll be glad to help you not to miss anything important. Enter `/help` to see more info.",
+    )

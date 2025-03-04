@@ -18,8 +18,14 @@ redis = "^5.2.1"
 requests = "^2.32.3"
 ua-generator = "^2.0.2"
 django-celery-beat = "^2.7.0"
-
+poethepoet = "^0.33.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.poe.tasks]
+dev = "python manage.py runserver"
+celery_worker = "celery -A chd worker --loglevel=info"
+celery_beat = "celery -A chd beat --loglevel=info --scheduler django_celery_beat.schedulers:DatabaseScheduler"
