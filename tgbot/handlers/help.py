@@ -8,6 +8,7 @@ def send_help(message, bot: TeleBot):
         """
 `/help` — see this message
 `/watch site` — watch the site's changes (max {max_watched} websites)
+`/list` ­— see your watched websites list
 `/forget site` — forget about the site
         """.format(max_watched=settings.MAX_WATCHED_PER_USER).strip(),
     )
